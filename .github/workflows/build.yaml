@@ -9,8 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/upload-artifact@a6a4016e509478a761d92ab2f2ad9c64f3737c2e
-
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: |
@@ -22,7 +21,7 @@ jobs:
           ./compile -p linux-arm64 -b AppImage
 
       - name: Upload AppImage artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@a6a4016e509478a761d92ab2f2ad9c64f3737c2e
         with:
           name: arduino-ide_linux-arm64
           path: build/arduino-ide/build/linux-arm64/AppImage/arduino-ide_*.AppImage
