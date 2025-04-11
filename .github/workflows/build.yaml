@@ -9,7 +9,8 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/upload-artifact@a6a4016e509478a761d92ab2f2ad9c64f3737c2e
+
 
       - name: Install dependencies
         run: |
