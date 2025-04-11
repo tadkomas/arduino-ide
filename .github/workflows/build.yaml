@@ -1,0 +1,27 @@
+name: Arduino IDE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [self-hosted, ARM64]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y npm libarchive-tools jq libxkbfile-dev libsecret-1-dev
+
+      - name: Build Arduino IDE
+        run: |
+          ./compile -p linux-arm64 -b AppImage
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: arduino-ide_linux-arm64
+          path: build/arduino-ide/build/linux-arm64/AppImage/arduino-ide_*.AppImage
